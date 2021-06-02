@@ -9,12 +9,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [  
+    "cli"  
+       ],  
+       "bin": {  
+    "mdlinks": "cli.js"  
+       },  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AngelicaT319/BOG002-md-links.git"
   },
   "author": "Angelica Theran",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/AngelicaT319/BOG002-md-links/issues"
   },
