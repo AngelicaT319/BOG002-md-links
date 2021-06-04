@@ -1,4 +1,4 @@
-const mdLinks = require("./index");
+const mdLinks = require("./index.js");
 
  function leerArchivos (rutaArchivo){
    mdLinks.api.leerArchivos(rutaArchivo)
@@ -37,7 +37,4 @@ function statusLinks (rutaArchivo, validate){
   .catch(console.error);
 }
 
-module.exports.irDirectorio = irDirectorio;
-module.exports.validateLinks = validateLinks;
-module.exports.statusLinks = statusLinks;
-module.exports.leerArchivos = leerArchivos;
+module.exports.mdLinks = {irDirectorio, validateLinks, leerArchivos, statusLinks};

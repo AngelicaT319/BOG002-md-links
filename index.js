@@ -40,16 +40,18 @@ function leerArchivos(rutaArchivo) {
         reject(error);
       }
       const links = archivos.matchAll(/\((http.*?)\)/gm);
+      const texts = archivos.matchAll(/\[(.*?)\]/gm);
       let linkEncontrado = links.next();
-
+      let textsEncontrado = texts.next();
       while (!linkEncontrado.done) {
         mdlinks.push({
           path: rutaArchivo,
           link: linkEncontrado.value[1],
-          text: "text",
+          text: textsEncontrado.value[1],
           
         });
         linkEncontrado = links.next();
+        textsEncontrado = texts.next();
       }
       resolve(mdlinks);
     });

@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-"use strict";
+
 
 const mdLink = require("./md-links.js");
 
@@ -8,14 +8,14 @@ const program = require("commander");
 const cli = (name, options, command) => {
   if (options.validate || options.stats) {
     if (options.validate) {
-      mdLink.validateLinks(name, { validate: true });
+      mdLink.mdLinks.validateLinks(name, { validate: true });
     }
     if (options.stats) {
-      mdLink.statusLinks(name);
+      mdLink.mdLinks.statusLinks(name);
     }
     return;
   } else {
-    mdLink.irDirectorio(name);
+    mdLink.mdLinks.irDirectorio(name);
   }
 };
 
