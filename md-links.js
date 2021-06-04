@@ -1,22 +1,42 @@
 const mdLinks = require("./index");
 
-mdLinks.api.leerArchivos("./prueba.md")
+ function leerArchivos (rutaArchivo){
+   mdLinks.api.leerArchivos(rutaArchivo)
   .then((links) => {
      console.log(links);
   })
   .catch(console.error);
+ }
 
-mdLinks.api.leerArchivos("./prueba.md", { validate: true })
+function validateLinks (rutaArchivo, validate){
+  mdLinks.api.leerArchivos(rutaArchivo, validate)
   .then((links) => {
-    mdLinks.api.ValidateLinks(links).then((result) => {
+    mdLinks.api.validateLinks(links).then((result) => {
       console.log(result);
     });
   })
   .catch(console.error);
+}
 
-mdLinks.api.irDirectorio("../BOG002-md-links")
+function irDirectorio (ruta){
+  mdLinks.api.irDirectorio(ruta)
   .then((links) => {
     console.log(links);
     
   })
   .catch(console.error);
+}
+
+function statusLinks (rutaArchivo, validate){
+  mdLinks.api.leerArchivos(rutaArchivo, validate)
+  .then((links) => {
+    mdLinks.api.validateLinks(links).then((result) => {
+      console.log(mdLinks.api.statusLinks(result));
+    });
+  })
+  .catch(console.error);
+}
+
+module.exports.irDirectorio = irDirectorio;
+module.exports.validateLinks = validateLinks;
+module.exports.statusLinks = statusLinks;

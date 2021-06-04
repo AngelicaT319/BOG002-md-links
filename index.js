@@ -26,7 +26,7 @@ function irDirectorio (ruta){
     return arrResult;
   }
   if (statss.isFile() && path.extname(ruta) === '.md') {
-    console.log("Cargando archivo "+ruta);
+    console.log(ruta);
     resolve(leerArchivos(ruta));
   }
 })
@@ -47,6 +47,7 @@ function leerArchivos(rutaArchivo) {
           path: rutaArchivo,
           link: linkEncontrado.value[1],
           text: "text",
+          
         });
         linkEncontrado = links.next();
       }
@@ -56,7 +57,7 @@ function leerArchivos(rutaArchivo) {
 }
 
 //validar links
-function ValidateLinks(arrayLinks) {
+function validateLinks(arrayLinks) {
   return Promise.all(
     arrayLinks.map((element) => {
       return new Promise((resolve, reject) => {
@@ -80,5 +81,25 @@ function ValidateLinks(arrayLinks) {
   );
 }
 
+function statusLinks (arraydata){
+  let unique = total = broken = valid = 0; 
+  const links = new Set() 
+  arraydata.forEach((data)=>{
+      if(data.status=== STATUS_OK){
+        valid++;
+      }
+      else{
+        broken++;
+      }
+      links.add(data.link);
+  })
+  total = valid + broken;
+  unique = links.size;
+  return {
+    total, unique, broken, valid 
+  } ; 
+}
 
-module.exports.api = { leerArchivos, ValidateLinks, irDirectorio };
+
+
+module.exports.api = { leerArchivos, validateLinks, irDirectorio, statusLinks };
