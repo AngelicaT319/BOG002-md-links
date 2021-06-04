@@ -6,14 +6,15 @@ const mdLink = require("./md-links.js");
 const program = require("commander");
 
 const cli = (name, options, command) => {
-  if (options) {
+  if (options.validate || options.stats) {
     if (options.validate) {
       mdLink.validateLinks(name, { validate: true });
     }
     if (options.stats) {
       mdLink.statusLinks(name);
     }
- else {
+    return;
+  } else {
     mdLink.irDirectorio(name);
   }
 };
@@ -23,5 +24,5 @@ program
   .arguments("<path>")
   .option("-v, --validate")
   .option("-s, --stats")
-  .action(cli)
-  .parse(process.argv);
+  .action(cli);
+program.parse(process.argv);

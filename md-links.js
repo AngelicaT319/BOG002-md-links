@@ -8,21 +8,21 @@ const mdLinks = require("./index");
   .catch(console.error);
  }
 
+ function irDirectorio (ruta){
+  mdLinks.api.irDirectorio(ruta)
+  .then((links) => {
+    console.log(links);
+    
+  })
+  .catch(console.error);
+}
+
 function validateLinks (rutaArchivo, validate){
   mdLinks.api.leerArchivos(rutaArchivo, validate)
   .then((links) => {
     mdLinks.api.validateLinks(links).then((result) => {
       console.log(result);
     });
-  })
-  .catch(console.error);
-}
-
-function irDirectorio (ruta){
-  mdLinks.api.irDirectorio(ruta)
-  .then((links) => {
-    console.log(links);
-    
   })
   .catch(console.error);
 }
@@ -40,3 +40,4 @@ function statusLinks (rutaArchivo, validate){
 module.exports.irDirectorio = irDirectorio;
 module.exports.validateLinks = validateLinks;
 module.exports.statusLinks = statusLinks;
+module.exports.leerArchivos = leerArchivos;
