@@ -28,6 +28,9 @@
   "dependencies": {
     "axios": "^0.21.1",
     "commander": "^7.2.0",
+    "jest-mock": "^27.0.3"
+  },
+  "devDependencies": {
     "jest": "^27.0.4"
   }
 }
